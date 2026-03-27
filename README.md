@@ -32,3 +32,4 @@ npx --yes serve -l 4173 .
 
 - `.github/workflows/deploy-pages.yml` 포함 (자동 배포)
 - GitHub Pages 하위 경로(`/repo-name/`)에서도 동작하도록 상대 경로/PWA 스코프를 맞춰둠
+
