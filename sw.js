@@ -1,4 +1,4 @@
-﻿const CACHE_NAME = 'commute-coach-v2';
+﻿const CACHE_NAME = 'commute-coach-v3';
 const BASE_PATH = self.location.pathname.replace(/[^/]+$/, '');
 const ASSETS = [
   `${BASE_PATH}`,
@@ -24,6 +24,7 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((cached) => {
       if (cached) return cached;
+
       return fetch(event.request)
         .then((response) => {
           const copy = response.clone();

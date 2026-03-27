@@ -3,35 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0d6efd" />
+  <meta name="theme-color" content="#0e5d58" />
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="stylesheet" href="./styles.css" />
   <title>출근 준비 코치</title>
 </head>
-<body>
-  <main class="app">
-    <header class="card hero">
-      <p class="eyebrow">Daily Commuting Helper</p>
+<body data-mood="clear">
+  <main class="app-shell">
+    <section class="hero panel">
+      <p class="kicker">Commute Briefing</p>
       <h1>출근 준비 코치</h1>
-      <p class="muted">날씨와 대기질을 바탕으로 아침 브리핑을 만들어줘요.</p>
-    </header>
+      <p class="hero-desc">현재 위치 기준으로 날씨, 대기질, 복장 가이드를 한 번에 확인하세요.</p>
 
-    <section class="card controls">
-      <button id="briefingBtn" class="primary">오늘 브리핑 생성</button>
-      <button id="installBtn" class="secondary" hidden>홈 화면에 추가</button>
-      <p id="status" class="muted">위치 권한을 허용하면 정확도가 올라가요.</p>
+      <div class="hero-meta">
+        <span id="locationText" class="pill">위치 확인 전</span>
+        <span id="coordText" class="pill soft">--</span>
+      </div>
     </section>
 
-    <section class="card" id="resultCard" hidden>
-      <h2>오늘의 한 줄 브리핑</h2>
-      <p id="headline" class="headline"></p>
-      <ul id="details" class="list"></ul>
-      <small id="updatedAt" class="muted"></small>
+    <section class="panel actions">
+      <button id="briefingBtn" class="btn btn-primary">지금 브리핑 갱신</button>
+      <button id="installBtn" class="btn btn-secondary" hidden>홈 화면에 추가</button>
+      <p id="status" class="status">앱을 열고 버튼을 누르면 최신 브리핑을 가져옵니다.</p>
     </section>
 
-    <section class="card">
+    <section class="panel metrics" id="resultCard" hidden>
+      <header class="section-head">
+        <h2>지금 상태</h2>
+        <small id="updatedAt"></small>
+      </header>
+
+      <div class="metric-grid">
+        <article class="metric-card">
+          <p class="metric-label">체감 온도</p>
+          <p id="tempValue" class="metric-value">--</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-label">3시간 강수 위험</p>
+          <p id="rainValue" class="metric-value">--</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-label">PM2.5</p>
+          <p id="pmValue" class="metric-value">--</p>
+        </article>
+      </div>
+
+      <article class="briefing-box">
+        <h3 id="headline">-</h3>
+        <ul id="details" class="detail-list"></ul>
+      </article>
+    </section>
+
+    <section class="panel">
       <h2>최근 브리핑</h2>
-      <ul id="history" class="list"></ul>
+      <ul id="history" class="history-list"></ul>
     </section>
   </main>
 
