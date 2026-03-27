@@ -256,6 +256,18 @@ async function createBriefing() {
   }
 }
 
+async function autoRefreshIfAllowed() {
+  try {
+    if (!navigator.permissions?.query) return;
+    const permission = await navigator.permissions.query({ name: 'geolocation' });
+    if (permission.state === 'granted') {
+      createBriefing();
+    }
+  } catch {
+    // Ignore permission API failures and keep manual flow.
+  }
+}
+
 briefingBtn.addEventListener('click', createBriefing);
 
 window.addEventListener('beforeinstallprompt', (event) => {
@@ -283,3 +295,4 @@ if ('serviceWorker' in navigator) {
 }
 
 renderHistory();
+autoRefreshIfAllowed();
