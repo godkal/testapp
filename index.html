@@ -1,0 +1,40 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d6efd" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./styles.css" />
+  <title>출근 준비 코치</title>
+</head>
+<body>
+  <main class="app">
+    <header class="card hero">
+      <p class="eyebrow">Daily Commuting Helper</p>
+      <h1>출근 준비 코치</h1>
+      <p class="muted">날씨와 대기질을 바탕으로 아침 브리핑을 만들어줘요.</p>
+    </header>
+
+    <section class="card controls">
+      <button id="briefingBtn" class="primary">오늘 브리핑 생성</button>
+      <button id="installBtn" class="secondary" hidden>홈 화면에 추가</button>
+      <p id="status" class="muted">위치 권한을 허용하면 정확도가 올라가요.</p>
+    </section>
+
+    <section class="card" id="resultCard" hidden>
+      <h2>오늘의 한 줄 브리핑</h2>
+      <p id="headline" class="headline"></p>
+      <ul id="details" class="list"></ul>
+      <small id="updatedAt" class="muted"></small>
+    </section>
+
+    <section class="card">
+      <h2>최근 브리핑</h2>
+      <ul id="history" class="list"></ul>
+    </section>
+  </main>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
